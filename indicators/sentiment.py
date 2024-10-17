@@ -1,12 +1,18 @@
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
+import yfinance as yf
 
 analyzer = SentimentIntensityAnalyzer()
+
+def get_headers(ticker: str):
+    articles = yf.Ticker(ticker).news
+    headers = [article.get('title') for article in articles]
+    return headers
+
 
 def score_text(text: str) -> float:
     avg = (score_text_tb(text) + score_text_vader(text)) / 2
     return avg
-
 
 def score_text_vader(text: str) -> float:
     vs = analyzer.polarity_scores(text)

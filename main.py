@@ -1,4 +1,3 @@
-from indicators.sentiment import score_text_tb as tb, score_text_vader as vd
+from indicators.main import media_opinion
 
-print(tb("I love you so much! I will be with you for ever and ever!!!!!"))
-print(vd("I love you so much! I will be with you for ever and ever!!!!!"))
+print(media_opinion("DELL"))
